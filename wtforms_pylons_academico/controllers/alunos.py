@@ -5,6 +5,12 @@ from pylons.controllers.util import abort, redirect
 
 from wtforms_pylons_academico.lib.base import BaseController, render
 from wtforms_pylons_academico.model.forms import AlunoForm
+from wtforms_pylons_academico.model import Aluno
+from wtforms_pylons_academico.model.meta import Session
+
+from datetime import date
+
+import time
 
 log = logging.getLogger(__name__)
 
@@ -19,3 +25,16 @@ class AlunosController(BaseController):
     def cadastrar_aluno(self):
         c.form = AlunoForm()
         return render('/novo_aluno.mako')
+
+    def cadastrar(self):
+        c.form = AlunoForm(request.params)
+        if request.method == 'POST' and c.form.validate():
+            aluno = Aluno()
+            aluno.nome = c.form.nome.data
+            time_data_nascimento = time.strptime(c.form.data_nascimento.data, '%Y-%m-%d')
+            aluno.data_nascimento = date(time_data_nascimento.tm_year, time_data_nascimento.tm_mon, time_data_nascimento.tm_mday)
+            Session.add(aluno)
+            Session.commit()
+        else:
+            return render('/novo_aluno.mako')
+        return 'Aluno inserido com sucesso!'
