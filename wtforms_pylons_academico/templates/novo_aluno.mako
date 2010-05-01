@@ -14,7 +14,7 @@
                   % endfor
                 </div>
             % endif
-            ${ c.form.nome.label|n,unicode }: ${ c.form.nome|n,unicode }
+            ${ c.form.nome.label }: ${ c.form.nome}
           </div>
 
           <div class="">
@@ -25,7 +25,7 @@
                   % endfor
                 </div>
             % endif
-            ${ c.form.data_nascimento.label|n,unicode }: ${ c.form.data_nascimento|n,unicode }
+            ${ c.form.data_nascimento.label }: ${ c.form.data_nascimento }
           </div>
         
           <p><input type="submit" value="Continue &rarr;"/></p>

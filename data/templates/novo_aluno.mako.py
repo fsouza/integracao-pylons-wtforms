@@ -3,7 +3,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 5
-_modified_time = 1272414495.1304929
+_modified_time = 1272734202.0504849
 _template_filename='/home/francisco/Projetos/wtforms_pylons_academico/wtforms_pylons_academico/templates/novo_aluno.mako'
 _template_uri='/novo_aluno.mako'
 _template_cache=cache.Cache(__name__, _modified_time)
@@ -34,9 +34,9 @@ def render_body(context,**pageargs):
             __M_writer(u'                </div>\n')
         # SOURCE LINE 17
         __M_writer(u'            ')
-        __M_writer(unicode( c.form.nome.label))
+        __M_writer(escape( c.form.nome.label ))
         __M_writer(u': ')
-        __M_writer(unicode( c.form.nome))
+        __M_writer(escape( c.form.nome))
         __M_writer(u'\n          </div>\n\n          <div class="">\n')
         # SOURCE LINE 21
         if c.form.data_nascimento.errors:
@@ -52,9 +52,9 @@ def render_body(context,**pageargs):
             __M_writer(u'                </div>\n')
         # SOURCE LINE 28
         __M_writer(u'            ')
-        __M_writer(unicode( c.form.data_nascimento.label))
+        __M_writer(escape( c.form.data_nascimento.label ))
         __M_writer(u': ')
-        __M_writer(unicode( c.form.data_nascimento))
+        __M_writer(escape( c.form.data_nascimento ))
         __M_writer(u'\n          </div>\n        \n          <p><input type="submit" value="Continue &rarr;"/></p>\n        </form>\n    </body>\n</html>\n')
         return ''
     finally:
