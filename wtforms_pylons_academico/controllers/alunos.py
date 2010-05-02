@@ -30,9 +30,7 @@ class AlunosController(BaseController):
         c.form = AlunoForm(request.params)
         if request.method == 'POST' and c.form.validate():
             aluno = Aluno()
-            aluno.nome = c.form.nome.data
-            time_data_nascimento = time.strptime(c.form.data_nascimento.data, '%Y-%m-%d')
-            aluno.data_nascimento = date(time_data_nascimento.tm_year, time_data_nascimento.tm_mon, time_data_nascimento.tm_mday)
+            c.form.populate_obj(aluno)
             Session.add(aluno)
             Session.commit()
         else:
